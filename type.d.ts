@@ -1,3 +1,5 @@
+import { Models } from "react-native-appwrite";
+
 type customInputProps = {
   placeholder?: string;
   value?: string;
@@ -24,5 +26,22 @@ type createUserProps = {
 
 type signInProps = {
   email: string;
-    password: string;
-}
+  password: string;
+};
+
+type user = Models.Document & {
+  name: string;
+  email: string;
+  avatar: string;
+};
+
+type authState = {
+  isAuthenticated: boolean;
+  user: user | null;
+  isLoading: boolean;
+  setIsAuthenticated: (value: boolean) => void;
+  setUser: (user: user | null) => void;
+  setIsLoading: (value: boolean) => void;
+  fecthAuthenticatedUser: () => Promise<void>
+};
+

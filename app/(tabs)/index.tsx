@@ -13,7 +13,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import cn from "clsx";
 import CartButton from "@/components/CartButton";
 
-
 export default function Index() {
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -49,13 +48,13 @@ export default function Index() {
                       <Text className="text-3xl font-quicksand-bold text-white leading-tight">
                         {item.title}
                       </Text>
+                      <Image
+                        source={images.arrowRight}
+                        className="size-10"
+                        resizeMode="contain"
+                        tintColor="#ffffff"
+                      />
                     </View>
-                    <Image
-                      source={images.arrowRight}
-                      className="size-10"
-                      resizeMode="contain"
-                      tintColor="#ffffff"
-                    />
                   </Fragment>
                 )}
               </Pressable>
