@@ -36,7 +36,7 @@ export const createUser = async ({
         email,
         name,
         accountId: newAccount.$id,
-        avatar: avatarUrl,
+        avtar: avatarUrl,
       }
     );
   } catch (error) {
