@@ -1,8 +1,17 @@
 import { images, offers } from "@/constants";
 import { Fragment } from "react";
-import { FlatList, Image, Pressable, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import cn from "clsx";
+import CartButton from "@/components/CartButton";
 
 export default function Index() {
   return (
@@ -53,6 +62,26 @@ export default function Index() {
           );
         }}
         contentContainerClassName="pb-28 px-5"
+        ListHeaderComponent={() => (
+          <View className="flex items-center justify-between flex-row w-full my-5">
+            <View className="flex items-start justify-center">
+              <Text className="text-xs font-quicksand-bold text-primary uppercase">
+                Deliver To
+              </Text>
+              <TouchableOpacity className="flex items-center justify-center flex-row gap-x-1 mt-0.5">
+                <Text className="text-base font-quicksand-bold text-dark-100">
+                  Croatia
+                </Text>
+                <Image
+                  source={images.arrowDown}
+                  className="size-3"
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
+            <CartButton />
+          </View>
+        )}
       />
     </SafeAreaView>
   );
