@@ -1,4 +1,11 @@
-import { Account, Avatars, Client, Databases, ID } from "react-native-appwrite";
+import {
+  Account,
+  Avatars,
+  Client,
+  Databases,
+  ID,
+  Query,
+} from "react-native-appwrite";
 
 export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
@@ -47,6 +54,22 @@ export const createUser = async ({
 export const signIn = async ({ email, password }: signInProps) => {
   try {
     const session = await account.createEmailPasswordSession(email, password);
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};
+
+export const gerCurrentUser = async () => {
+  try {
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+    return currentUser.documents.at(0);
   } catch (error) {
     throw new Error(error as string);
   }
