@@ -42,6 +42,11 @@ type authState = {
   setIsAuthenticated: (value: boolean) => void;
   setUser: (user: user | null) => void;
   setIsLoading: (value: boolean) => void;
-  fecthAuthenticatedUser: () => Promise<void>
+  fecthAuthenticatedUser: () => Promise<void>;
 };
 
+type tabBarIconProps = {
+  focused: boolean;
+  icon: ImageSourcePropType;
+  title: string;
+};
