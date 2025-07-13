@@ -13,7 +13,12 @@ export const appwriteConfig = {
   platform: "com.rutvikdarji.fastfood",
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
   databaseId: "68732673000a62c42956",
+  bucketId: "6873979e001758cb5376",
   userCollectionId: "687326ca000ee7543236",
+  categoriesCollectionId: "687393c80035f6cff8ed",
+  menuCollectionId: "6873946e001e615c83ba",
+  customizationCollectionId: "687395cb001c44df5cf8",
+  menuCustomizationCollectionId: "6873969a003e6dd4c942",
 };
 
 export const client = new Client();
