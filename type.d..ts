@@ -15,3 +15,14 @@ type customButtonProps = {
   textStyle?: string;
   isLoading?: boolean;
 };
+
+type createUserProps = {
+  email: string;
+  password: string;
+  name: string;
+};
+
+type signInProps = {
+  email: string;
+    password: string;
+}
