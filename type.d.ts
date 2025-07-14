@@ -50,3 +50,8 @@ type tabBarIconProps = {
   icon: ImageSourcePropType;
   title: string;
 };
+
+type getMenuProps = {
+  category: string;
+  query: string;
+};

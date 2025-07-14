@@ -1,4 +1,4 @@
-import { createUserProps, signInProps } from "@/type";
+import { createUserProps, getMenuProps, signInProps } from "@/type";
 import {
   Account,
   Avatars,
@@ -82,3 +82,31 @@ export const gerCurrentUser = async () => {
     throw new Error(error as string);
   }
 };
+
+export const getMenu = async ({ category, query }: getMenuProps) => {
+  try {
+    const queries: string[] = [];
+    if (category) queries.push(Query.equal("category", category));
+    if(query) queries.push(Query.search("name", query));
+    const menus = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menuCollectionId,
+      queries
+    );
+    return menus.documents;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const categories = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.categoriesCollectionId
+    );
+    return categories.documents;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+}
